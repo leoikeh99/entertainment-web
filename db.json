@@ -1,0 +1,9 @@
+{
+  "users": [
+    {
+      "email": "leo@leo.com",
+      "password": "$2a$10$a3uWFgUHoTbfPa9bG3ZOEu3LR304es/8EerWsTPDiwFEg5E6Hxdj2",
+      "id": 1
+    }
+  ]
+}
