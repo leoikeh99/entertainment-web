@@ -53,7 +53,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                   path: "/",
                 })
               );
-              res.status(200).json({ token });
+              res
+                .status(200)
+                .json({
+                  message: "Registration successfull",
+                  user: { id: val2.data.id, email: val2.data.email },
+                  token,
+                });
             } catch (error) {
               return res.status(400).json(error);
             }

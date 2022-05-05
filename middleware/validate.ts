@@ -10,7 +10,7 @@ function validate(
       try {
         await schema.validate(req.body);
       } catch (error: any) {
-        return res.status(400).json({ message: error.errors });
+        return res.status(400).json({ message: error.errors[0] });
       }
     }
     await handler(req, res);
