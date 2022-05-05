@@ -1,21 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import registerSchema from "../../../schemas/registerSchema";
-import { OptionalObjectSchema, ObjectShape } from "yup/lib/object";
 import { BASE_URL, JWT_SECRET } from "../../../config";
 import axios from "axios";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
-
-type User = {
-  email: string;
-  password: string;
-};
-
-type payload = {
-  user: { id: string };
-};
+import { Payload, User } from "../../../types/auth.types";
+import validate from "../../../middleware/validate";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -42,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         await axios
           .post(`${BASE_URL}/users`, user, config)
           .then(async (val2) => {
-            const payload: payload = {
+            const payload: Payload = {
               user: {
                 id: val2.data.id,
               },
@@ -79,21 +70,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).json({ message: `Method ${req.method} not allowed` });
   }
 };
-
-export function validate(
-  registerSchema: OptionalObjectSchema<ObjectShape>,
-  handler: NextApiHandler
-) {
-  return async (req: NextApiRequest, res: NextApiResponse) => {
-    if (req.method === "POST") {
-      try {
-        await registerSchema.validate(req.body);
-      } catch (error: any) {
-        return res.status(400).json({ message: error.errors });
-      }
-    }
-    await handler(req, res);
-  };
-}
 
 export default validate(registerSchema, handler);
