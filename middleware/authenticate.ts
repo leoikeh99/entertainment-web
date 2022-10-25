@@ -4,10 +4,10 @@ import jwt from "jsonwebtoken";
 import { Payload } from "../types/auth.types";
 import { JWT_SECRET } from "../config";
 
-function authenticate(handler: NextApiHandler) {
+function authenticate(handler: NextApiHandler, method: string) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    if (req.method !== "GET") {
-      res.setHeader("Allow", ["GET"]);
+    if (req.method !== method) {
+      res.setHeader("Allow", [method]);
       return res
         .status(405)
         .json({ message: `Method ${req.method} not allowed` });

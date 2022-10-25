@@ -4,6 +4,11 @@ export const SearcBar = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 28px;
+  margin-bottom: 25px;
+
+  @media (max-width: 600px) {
+    gap: 15px;
+  }
 `;
 
 export const Input = styled.input`
@@ -16,6 +21,7 @@ export const Input = styled.input`
   outline: none;
   font-size: 32px;
   font-weight: 300;
+  border-bottom: 1px solid #10141e;
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -25,5 +31,13 @@ export const Input = styled.input`
 
   &:focus {
     border-bottom: 1px solid #5a698f;
+  }
+
+  &:hover {
+    caret-color: #fc4747;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 20px;
   }
 `;
