@@ -1,53 +1,42 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { BASE_URL } from "../../../config";
-import axios from "axios";
 import authenticate from "../../../middleware/authenticate";
+import clientPromise from "../../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.body;
   const showId = req.query.showId;
 
-  await axios
-    .get(`${BASE_URL}/_bookmarks?userId=${id}&showId=${showId}`)
-    .then(async (response) => {
-      if (response.data.length > 0) {
-        const bookmark = response.data[0];
-        await axios
-          .delete(`${BASE_URL}/_bookmarks/${bookmark.id}`)
-          .then(async (response) => {
-            const res2 = await axios.get(`${BASE_URL}/_bookmarks?userId=${id}`);
-            res.status(200).json(res2.data);
-          })
-          .catch((err) => {
-            res.status(400).json(err);
-          });
-      } else {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        await axios
-          .post(
-            `${BASE_URL}/_bookmarks`,
-            {
-              userId: id,
-              showId: showId,
-            },
-            config
-          )
-          .then(async (response) => {
-            const res2 = await axios.get(`${BASE_URL}/_bookmarks?userId=${id}`);
-            res.status(200).json(res2.data);
-          })
-          .catch((err) => {
-            res.status(400).json(err);
-          });
-      }
-    })
-    .catch(async (error) => {
-      console.log(error);
-    });
+  const client = await clientPromise;
+  const db = client.db("myFirstDatabase");
+
+  const prevBookmark = await db
+    .collection("bookmarks")
+    .findOne({ user: new ObjectId(id), showId });
+
+  if (prevBookmark) {
+    await db
+      .collection("bookmarks")
+      .findOneAndDelete({ user: new ObjectId(id), showId });
+
+    const bookmarks = await db
+      .collection("bookmarks")
+      .find({ user: new ObjectId(id) })
+      .toArray();
+
+    res.status(200).json(bookmarks);
+  } else {
+    const addBookmark = await db
+      .collection("bookmarks")
+      .insertOne({ user: new ObjectId(id), showId });
+
+    const bookmarks = await db
+      .collection("bookmarks")
+      .find({ user: new ObjectId(id) })
+      .toArray();
+
+    res.status(200).json(bookmarks);
+  }
 };
 
 export default authenticate(handler, "POST");
