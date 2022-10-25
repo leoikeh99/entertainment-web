@@ -39,6 +39,7 @@ export const Cover = styled.div`
     margin-top: 24px;
     top: 0;
     left: 0;
+    z-index: 20;
   }
 
   @media (max-width: 600px) {

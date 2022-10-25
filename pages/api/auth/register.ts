@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       };
       const token = await jwt.sign(payload, JWT_SECRET as string, {
-        expiresIn: 3600,
+        expiresIn: "24h",
       });
       res.setHeader(
         "Set-Cookie",

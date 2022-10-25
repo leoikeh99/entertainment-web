@@ -27,6 +27,7 @@ const Layout = ({ title, keywords, desc, children }: _Layout) => {
     <div>
       <Head>
         <title>{title}</title>
+        <link rel="icon" href="/favicon.png" />
         <meta name="description" content={desc} />
         <meta name="keywords" content={keywords} />
       </Head>

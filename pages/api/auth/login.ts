@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     };
     const token = await jwt.sign(payload, JWT_SECRET as string, {
-      expiresIn: 3600,
+      expiresIn: "24h",
     });
     res.setHeader(
       "Set-Cookie",
@@ -69,55 +69,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error: any) {
     return res.status(400).json(error);
   }
-
-  // await axios
-  //   .get(`${BASE_URL}/_users?email=${email}`)
-  //   .then(async (val) => {
-  //     if (val.data.length === 0) {
-  //       return res.status(400).json({ message: "Invalid credentials" });
-  //     }
-  //     const checkPass = await bcrypt.compare(password, val.data[0].password);
-  //     if (!checkPass) {
-  //       return res.status(400).json({ message: "Invalid credentials" });
-  //     }
-
-  //     try {
-  //       const payload: Payload = {
-  //         user: {
-  //           id: val.data[0].id,
-  //         },
-  //       };
-  //       const token = await jwt.sign(payload, JWT_SECRET as string, {
-  //         expiresIn: 3600,
-  //       });
-  //       res.setHeader(
-  //         "Set-Cookie",
-  //         cookie.serialize("token", token, {
-  //           httpOnly: true,
-  //           secure: process.env.NODE_ENV !== "development",
-  //           maxAge: 60 * 60 * 24 * 7,
-  //           sameSite: "strict",
-  //           path: "/",
-  //         })
-  //       );
-
-  //       const res2 = await axios.get(
-  //         `${BASE_URL}/_bookmarks?userId=${val.data[0].id}`
-  //       );
-
-  //       res.status(200).json({
-  //         message: "Login successfull",
-  //         user: { id: val.data[0].id, email: val.data[0].email },
-  //         bookmarks: res2.data,
-  //         token,
-  //       });
-  //     } catch (error: any) {
-  //       return res.status(400).json(error);
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     res.status(400).json({ error });
-  //   });
 };
 
 export default validate(registerSchema, handler);
