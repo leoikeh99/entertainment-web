@@ -13,9 +13,9 @@ const Card = ({
     <CardCover>
       <BookMark onClick={() => toggleBookmark(id)}>
         {user && bookmarks.some((bookmark) => bookmark.showId === id) ? (
-          <img src="/assets/icon-bookmark-full.svg" alt="" />
+          <img src="/assets/icon-bookmark-full.svg" alt="b-full" />
         ) : (
-          <img src="/assets/icon-bookmark-empty.svg" alt="" />
+          <img src="/assets/icon-bookmark-empty.svg" alt="b-empty" />
         )}
       </BookMark>
       <div style={{ position: "relative", maxHeight: "174px" }}>
@@ -29,7 +29,8 @@ const Card = ({
         <CardImage src={thumbnail.regular.small} />
       </div>
       <CardInfo>
-        {year} <Image src="/assets/oval.svg" height={3} width={3} />
+        {year}{" "}
+        <Image src="/assets/oval.svg" height={3} width={3} alt="oval_image" />
         <span>
           <Image
             src={`/assets/icon-category-${
@@ -37,10 +38,11 @@ const Card = ({
             }.svg`}
             height={12}
             width={12}
+            alt="category_image"
           />
           {category}
         </span>
-        <Image src="/assets/oval.svg" height={3} width={3} />
+        <Image src="/assets/oval.svg" height={3} width={3} alt="oval_image" />
         {rating}
       </CardInfo>
       <CardTitle>{title}</CardTitle>

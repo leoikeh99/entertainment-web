@@ -29,7 +29,12 @@ const Series = () => {
     <Layout title="Entertainment Web | TV Series">
       <M.Container>
         <SearcBar>
-          <Image src="/assets/icon-search.svg" width={32} height={32} />
+          <Image
+            src="/assets/icon-search.svg"
+            width={32}
+            height={32}
+            alt="search_icon"
+          />
           <Input
             placeholder="Search for TV series"
             value={search}

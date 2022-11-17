@@ -48,7 +48,7 @@ export default function Sidebar() {
         )}
       </styles.Navigation>
       {user ? (
-        <img className="avatar" src="/assets/image-avatar.png" />
+        <img className="avatar" src="/assets/image-avatar.png" alt="avatar" />
       ) : (
         <Link href="/login" passHref>
           <i className="fa-solid fa-arrow-right-to-bracket" />

@@ -20,13 +20,14 @@ const TrendingItem = ({
       </div>
       <BookMark onClick={() => toggleBookmark(id)}>
         {user && bookmarks.some((bookmark) => bookmark.showId === id) ? (
-          <img src="/assets/icon-bookmark-full.svg" alt="" />
+          <img src="/assets/icon-bookmark-full.svg" alt="b-full" />
         ) : (
-          <img src="/assets/icon-bookmark-empty.svg" alt="" />
+          <img src="/assets/icon-bookmark-empty.svg" alt="b-empty" />
         )}
       </BookMark>
       <p>
-        {year} <Image src="/assets/oval.svg" height={3} width={3} />
+        {year}{" "}
+        <Image src="/assets/oval.svg" height={3} width={3} alt="oavl_icon" />
         <span>
           <Image
             src={`/assets/icon-category-${
@@ -34,10 +35,11 @@ const TrendingItem = ({
             }.svg`}
             height={12}
             width={12}
+            alt="category_icon"
           />
           {category}
         </span>
-        <Image src="/assets/oval.svg" height={3} width={3} />
+        <Image src="/assets/oval.svg" height={3} width={3} alt="oval_icon" />
         {rating}
       </p>
       <h3>{title}</h3>

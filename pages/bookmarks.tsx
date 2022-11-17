@@ -33,7 +33,12 @@ const Bookmarks = () => {
     <Layout title="Entertainment Web | Bookmarks">
       <M.Container>
         <SearcBar>
-          <Image src="/assets/icon-search.svg" width={32} height={32} />
+          <Image
+            src="/assets/icon-search.svg"
+            width={32}
+            height={32}
+            alt="search_icon"
+          />
           <Input
             placeholder="Search for bookmarked shows"
             value={search}

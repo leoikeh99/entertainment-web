@@ -41,7 +41,12 @@ const Home: NextPage = () => {
     <Layout title="Web Entertainment | Home">
       <Container>
         <SearcBar>
-          <Image src="/assets/icon-search.svg" width={32} height={32} />
+          <Image
+            src="/assets/icon-search.svg"
+            width={32}
+            height={32}
+            alt="search_icon"
+          />
           <Input
             placeholder="Search for movies or TV series"
             value={search}
@@ -87,13 +92,6 @@ const Home: NextPage = () => {
 export default Home;
 
 export async function getServerSideProps() {
-  // const client = await clientPromise;
-  // const db = client.db("myFirstDatabase");
-
-  // const carts = await db.collection("carts").find({}).limit(20).toArray();
-
-  // console.log(carts);
-
   return {
     props: {},
   };
