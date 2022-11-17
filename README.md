@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://entertainment-web.vercel.app/](https://your-solution-url.com)
+- Solution URL: [https://entertainment-web.vercel.app/](https://entertainment-web.vercel.app/)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ### Built with
