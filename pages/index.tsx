@@ -10,7 +10,6 @@ import Card from "../components/Card";
 import { Show } from "../types/component.types";
 import SearchResults from "../components/SearchResults";
 import { Cards, Container } from "../styles/Main.styles";
-import clientPromise from "../lib/mongodb";
 
 const Home: NextPage = () => {
   const [search, setSearch] = useState("");
