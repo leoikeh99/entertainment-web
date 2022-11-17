@@ -12,7 +12,7 @@ const SearchResults = ({ results, text }: _SearchResults) => {
   return (
     <div>
       <Heading>
-        Found {results.length} for '{text}'
+        Found {results.length} for &rsquo;{text}&rsquo;
       </Heading>
 
       <Cards>

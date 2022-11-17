@@ -72,7 +72,7 @@ const Login: NextPage = () => {
             {btnLoader ? "Loading..." : "Login to your account"}
           </styles.Button>
           <styles.Text>
-            Don't have an account? <Link href="/register">Sign Up</Link>
+            Don&apos;t have an account? <Link href="/register">Sign Up</Link>
           </styles.Text>
         </styles.AuthForm>
       </styles.AuthContainer>
