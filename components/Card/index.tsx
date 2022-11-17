@@ -22,11 +22,11 @@ const Card = ({
         <div className="play">
           <Overlay />
           <PlayBtn>
-            <img src="/assets/icon-play.svg" alt="" />
+            <img src="/assets/icon-play.svg" alt="play_icon" />
             Play
           </PlayBtn>
         </div>
-        <CardImage src={thumbnail.regular.small} />
+        <CardImage src={thumbnail.regular.small} alt="show_image" />
       </div>
       <CardInfo>
         {year}{" "}

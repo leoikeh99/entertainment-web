@@ -14,7 +14,7 @@ const TrendingItem = ({
       <div className="play">
         <Overlay></Overlay>
         <PlayBtn>
-          <img src="/assets/icon-play.svg" alt="" />
+          <img src="/assets/icon-play.svg" alt="play_icon" />
           Play
         </PlayBtn>
       </div>
