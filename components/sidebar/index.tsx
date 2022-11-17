@@ -20,7 +20,7 @@ export default function Sidebar() {
 
   return (
     <styles.Cover>
-      <Image src="/assets/logo.svg" width={32} height={25.6} />
+      <Image src="/assets/logo.svg" width={32} height={25.6} alt="logo" />
       <styles.Navigation>
         <Link href="/" passHref>
           <a>
