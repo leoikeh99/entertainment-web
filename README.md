@@ -30,11 +30,10 @@ Users should be able to:
 ### Screenshot
 
 ![desktop_screenchot](./screenshots/e-web-desk.png)
-![mobile_screenchot](./screenshots/e-web-mob.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://entertainment-web.vercel.app/](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ### Built with
